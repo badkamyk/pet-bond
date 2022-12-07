@@ -36,7 +36,7 @@ export default function Nav() {
         <Navbar
             fluid={true}
             rounded={true}
-            className="border-b-2"
+            className="border-b-2 mb-6"
         >
             <Navbar.Brand href="/">
                 <Image
