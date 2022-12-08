@@ -2,13 +2,15 @@
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import * as z from "zod";
+import {FormAlert} from "../../components/FormAlert";
 
 const schema = z.object({
     name: z.string().min(3, "Name must be at least 3 characters"),
     surname: z.string().min(3, "Surname must be at least 3 characters"),
-    phone: z.string().min(9, "Phone number must be at least 9 characters").regex(/^\d+$/, "Phone number must be numeric"),
+    phone: z.string().regex(/^\d+$/, "Phone number must be numeric").min(9, "Phone number must be at least 9 characters"),
     message: z.string().min(10, "Message must be at least 10 characters"),
 });
+
 export default function Contact() {
     const {register, handleSubmit, reset, formState: {errors}} = useForm(
         {
@@ -28,6 +30,20 @@ export default function Contact() {
         reset();
     }
 
+    const checkFormErrors = () => {
+        if (errors.name?.message) {
+            return <FormAlert message={errors.name?.message}/>
+        }
+        if (errors.surname?.message) {
+            return <FormAlert message={errors.surname?.message}/>
+        }
+        if (errors.phone?.message) {
+            return <FormAlert message={errors.phone?.message}/>
+        }
+        if (errors.message?.message) {
+            return <FormAlert message={errors.message?.message}/>
+        }
+    }
 
     return (
         <div className="min-h-screen mt-9">
@@ -66,6 +82,8 @@ export default function Contact() {
                         <span className="mt-2">example@example.com</span>
                     </a>
                 </div>
+                {}
+                {checkFormErrors()}
                 <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
                     <div className="items-center -mx-2 md:flex">
                         <div className="w-full mx-2">
@@ -77,7 +95,6 @@ export default function Contact() {
                             />
 
                         </div>
-                        {errors.name?.message && <p>{errors.name?.message}</p>}
                         <div className="w-full mx-2">
                             <label
                                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Surname</label>
