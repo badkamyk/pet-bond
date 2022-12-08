@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import * as z from "zod";
 import {FormAlert} from "../../components/FormAlert";
+import {useRef} from "react";
+import emailjs from '@emailjs/browser';
 
 const schema = z.object({
     name: z.string().min(3, "Name must be at least 3 characters"),
@@ -10,6 +12,8 @@ const schema = z.object({
     phone: z.string().regex(/^\d+$/, "Phone number must be numeric").min(9, "Phone number must be at least 9 characters"),
     message: z.string().min(10, "Message must be at least 10 characters"),
 });
+
+type ContactType = z.infer<typeof schema>;
 
 export default function Contact() {
     const {register, handleSubmit, reset, formState: {errors}} = useForm(
@@ -23,10 +27,16 @@ export default function Contact() {
             }
         },
     );
-    type ContactType = z.infer<typeof schema>;
+    const formRef = useRef<HTMLFormElement>(null);
 
     const onSubmit = (contactData: ContactType) => {
-        console.log(contactData);
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current as string | HTMLFormElement, 'YOUR_PUBLIC_KEY')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        // console.log(contactData);
         reset();
     }
 
@@ -84,7 +94,7 @@ export default function Contact() {
                 </div>
                 {}
                 {checkFormErrors()}
-                <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
+                <form ref={formRef} className="mt-6" onSubmit={handleSubmit(onSubmit)}>
                     <div className="items-center -mx-2 md:flex">
                         <div className="w-full mx-2">
                             <label
