@@ -1,4 +1,34 @@
+'use client'
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const schema = z.object({
+    name: z.string().min(3, "Name must be at least 3 characters"),
+    surname: z.string().min(3, "Surname must be at least 3 characters"),
+    phone: z.string().min(9, "Phone number must be at least 9 characters").regex(/^\d+$/, "Phone number must be numeric"),
+    message: z.string().min(10, "Message must be at least 10 characters"),
+});
 export default function Contact() {
+    const {register, handleSubmit, reset, formState: {errors}} = useForm(
+        {
+            resolver: zodResolver(schema),
+            defaultValues: {
+                name: "",
+                surname: "",
+                phone: "",
+                message: "",
+            }
+        },
+    );
+    type ContactType = z.infer<typeof schema>;
+
+    const onSubmit = (contactData: ContactType) => {
+        console.log(contactData);
+        reset();
+    }
+
+
     return (
         <div className="min-h-screen mt-9">
             <section className="w-full max-w-2xl px-6 py-4 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -24,7 +54,6 @@ export default function Contact() {
                             <path
                                 d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                         </svg>
-
                         <span className="mt-2">+2499999666600</span>
                     </a>
                     <a href="#"
@@ -37,47 +66,51 @@ export default function Contact() {
                         <span className="mt-2">example@example.com</span>
                     </a>
                 </div>
-                <div className="mt-6 ">
+                <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
                     <div className="items-center -mx-2 md:flex">
                         <div className="w-full mx-2">
                             <label
                                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Name</label>
 
-                            <input
-                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                type="text"/>
+                            <input type="text" {...register("name")}
+                                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            />
+
                         </div>
+                        {errors.name?.message && <p>{errors.name?.message}</p>}
                         <div className="w-full mx-2">
                             <label
                                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Surname</label>
 
                             <input
+                                type="text" {...register("surname")}
                                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                type="text"/>
+                            />
                         </div>
                         <div className="w-full mx-2 mt-4 md:mt-0">
                             <label
                                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Phone
                                 number</label>
-                            <input
-                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                                type="email"/>
+                            <input type="text" {...register("phone")}
+                                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            />
                         </div>
                     </div>
                     <div className="w-full mt-4">
                         <label
                             className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Message</label>
-
-                        <textarea
-                            className="block w-full h-40 px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"/>
+                        <textarea  {...register("message")}
+                                   className="block w-full h-40 px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800
+                             dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none
+                              focus:ring focus:ring-blue-300 focus:ring-opacity-40"/>
                     </div>
                     <div className="flex justify-center mt-6">
-                        <button
-                            className="px-4 py-2 text-white transition-colors duration-300 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-gray-600">Send
+                        <button type="submit"
+                                className="px-4 py-2 text-white transition-colors duration-300 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-gray-600">Send
                             Message
                         </button>
                     </div>
-                </div>
+                </form>
             </section>
         </div>
     )
