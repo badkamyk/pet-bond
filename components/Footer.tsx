@@ -8,7 +8,7 @@ export default function FooterComponent() {
               by="Flowbite™"
               year={2022}
           />
-          <Footer.LinkGroup>
+          <Footer.LinkGroup className="flex gap-3">
               <Footer.Link href="#">
                   About
               </Footer.Link>
