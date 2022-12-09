@@ -25,8 +25,8 @@ const navLinks = [
         label: "Favorites",
     },
     {
-        href: "donate",
-        label: "Donate",
+        href: "support",
+        label: "Support",
     }
     ]
 
