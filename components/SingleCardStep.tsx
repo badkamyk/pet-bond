@@ -1,6 +1,6 @@
-import { StepType } from "../utils/types/StepType";
+import { CardType } from "../utils/types/CardType";
 
-export default function SingleCardStep({ icon, title, description }: StepType) {
+export default function SingleCardStep({ icon, title, description }: CardType) {
     return (
         <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl">
             <span className="inline-block text-blue-500 dark:text-blue-400">

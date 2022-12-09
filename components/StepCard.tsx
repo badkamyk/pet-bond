@@ -1,5 +1,5 @@
 import SingleCardStep from './SingleCardStep';
-import { cardData } from '../utils/data/cardData';
+import { cardHomeData } from '../utils/data/cardHomeData';
 
 export default function StepCard() {
     return (
@@ -13,7 +13,7 @@ export default function StepCard() {
                 </p>
 
                 <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
-                    {cardData.map((card) => (
+                    {cardHomeData.map((card) => (
                         <SingleCardStep key={card.title} {...card} />
                     ))}
                 </div>
