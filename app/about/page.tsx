@@ -25,15 +25,20 @@ export default function About() {
 
                         <div className="p-8 sm:p-16 lg:p-24">
                             <h2 className="text-2xl font-bold sm:text-3xl">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore,
-                                debitis.
+                                Animals rehoming and rescue
                             </h2>
 
                             <p className="mt-4 text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-                                molestiae! Quidem est esse numquam odio deleniti, beatae, magni
-                                dolores provident quaerat totam eos, aperiam architecto eius quis
-                                quibusdam fugiat dicta.
+                                We are a non-profit organization that helps
+                                animals in need. We help animals find new homes
+                                and provide them with the best care. We are
+                                always looking for volunteers to help us with
+                                our mission. If you are interested in helping
+                                us, please contact us.
+                                You can search throurgh a list of animals that
+                                are looking for a new home. You can also
+                                contribute to our cause by donating money or
+                                volunteering.
                             </p>
 
                             <Link
