@@ -5,6 +5,7 @@ import {QueryClientProvider, QueryClient, useQuery, useQueryClient} from "react-
 import Spinner from "../../components/Spinner";
 import {useState} from "react";
 import {PetApiType} from "../../utils/types/PetApiType";
+import PetCard from "../../components/PetCard";
 
 // const queryClient = new QueryClient()
 export default function Adopt() {
@@ -35,10 +36,7 @@ export default function Adopt() {
                 {error ? <div>Something went wrong</div>
                     : isLoading ? <Spinner/>
                     : filteredPets?.map((pet: PetApiType) => (
-                        <div key={pet.id}>
-                            <h2>{pet.name}</h2>
-                            <p>{pet.description}</p>
-                        </div>
+                        <PetCard key={pet.id} {...pet}/>
                     ))}
             </div>
         </>
