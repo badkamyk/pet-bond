@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
     return (
@@ -10,7 +11,8 @@ export default function Hero() {
                             <div className="mt-12 lg:mt-0">
                                 <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-5">Adopt <br/><span
                                     className="text-blue-600">friend for life</span></h1>
-                                <p className="mb-12 text-lg">You can see here all available pupils and adopt them. It&apos;s
+                                <p className="mb-12 text-lg">You can see here all available pupils and adopt them.
+                                    It&apos;s
                                     also possible to support them by donating.</p>
                                 <Link
                                     className="inline-block px-7 py-3 mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -23,8 +25,10 @@ export default function Hero() {
 
                             </div>
                             <div className="mb-12 lg:mb-0">
-                                <img
-                                    src="https://mdbootstrap.com/img/new/ecommerce/vertical/028.jpg"
+                                <Image
+                                    width={500}
+                                    height={500}
+                                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
                                     className="w-full rounded-lg shadow-lg"
                                     alt=""
                                 />
