@@ -25,7 +25,7 @@ export default function Adopt() {
         } else {
             return pet.breed.toLowerCase().includes(searchPhrase.toLowerCase()) && pet.category === category;
         }
-    } )
+    })
 
     return (
         <>
@@ -35,9 +35,12 @@ export default function Adopt() {
                 <SearchInput category={category} setCategory={setCategory} setSearchPhrase={setSearchPhrase}/>
                 {error ? <div>Something went wrong</div>
                     : isLoading ? <Spinner/>
-                    : filteredPets?.map((pet: PetApiType) => (
-                        <PetCard key={pet.id} {...pet}/>
-                    ))}
+                        : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {filteredPets?.map((pet: PetApiType) => (
+                                <PetCard key={pet.id} {...pet}/>
+                            ))}
+                        </div>
+                }
             </div>
         </>
     )
