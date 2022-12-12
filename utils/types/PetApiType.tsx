@@ -6,4 +6,5 @@ export type PetApiType = {
     image: string;
     id: string;
     adopted: boolean;
+    category: "Dogs" | "Cats";
 }

@@ -3,7 +3,7 @@ import React, {useRef} from "react";
 import {SearchInputProps} from "../utils/types/SearchInputProps";
 
 
-const categories = ["Dogs", "Cats"]
+const categories = ["Dogs", "Cats", "All categories"];
 export default function SearchInput({
                                         category,
                                         setCategory,
@@ -39,7 +39,6 @@ export default function SearchInput({
                 <label htmlFor="search-dropdown"
                        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Type in breed</label>
                 <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                        onClick={() => setCategory("All categories")}
                         className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
                         type="button">{category}
                     <svg aria-hidden="true" className="w-4 h-4 ml-1"

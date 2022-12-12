@@ -6,7 +6,8 @@
     "description": "Buddy is a 3 year old Labrador. He is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/labrador/n02099712_1003.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f5b-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Max",
@@ -15,7 +16,8 @@
     "description": "Max is a 2 year old Golden Retriever. He is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/retriever-golden/n02099601_1003.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f5l-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Charlie",
@@ -24,7 +26,8 @@
     "description": "Charlie is a 1 year old Poodle. He is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/poodle-toy/n02113624_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f5x-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Bella",
@@ -33,7 +36,8 @@
     "description": "Bella is a 4 year old German Shepherd. She is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/germanshepherd/n02106662_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f52-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Lucy",
@@ -42,7 +46,8 @@
     "description": "Lucy is a 5 year old Beagle. She is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/beagle/n02088364_1003.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f53-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Molly",
@@ -51,7 +56,8 @@
     "description": "Molly is a 6 year old Pug. She is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/pug/n02110958_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f54-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Bailey",
@@ -60,7 +66,8 @@
     "description": "Bailey is a 7 year old Bulldog. He is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/bulldog-boston/n02096585_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f55-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Daisy",
@@ -69,7 +76,8 @@
     "description": "Daisy is a 8 year old Boxer. She is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/boxer/n02108089_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f56-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
   },
   {
     "name": "Rocky",
@@ -78,6 +86,47 @@
     "description": "Rocky is a 9 year old Rottweiler. He is healthy and loves to play fetch.",
     "image": "https://images.dog.ceo/breeds/rottweiler/n02106550_10026.jpg",
     "id": "5f9f5b9b-8b9f-4b9f-9f57-9b8b9f4b9f5b",
-    "adopted": false
+    "adopted": false,
+    "category": "Dogs"
+  },
+  {
+    "name": "Garfield",
+    "age": 3,
+    "breed": "Tabby",
+    "description": "Garfield is a 3 year old Tabby. He is healthy and loves to play fetch.",
+    "image": "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg",
+    "id": "5f9f5b9b-8b9f-4b9f-9f58-9b8b9f4b9f5b",
+    "adopted": false,
+    "category": "Cats"
+  },
+  {
+    "name": "Sylvester",
+    "age": 2,
+    "breed": "Tabby",
+    "description": "Sylvester is a 2 year old Tabby. He is healthy and loves to play fetch.",
+    "image": "https://images.dog.ceo/breeds/hound-afghan/n02088094_10026.jpg",
+    "id": "5f9f5b9b-8b9f-4b9f-9f59-9b8b9f4b9f5b",
+    "adopted": false,
+    "category": "Cats"
+  },
+  {
+    "name": "Tom",
+    "age": 1,
+    "breed": "Tabby",
+    "description": "Tom is a 1 year old Tabby. He is healthy and loves to play fetch.",
+    "image": "https://images.dog.ceo/breeds/hound-afghan/n02088094_10027.jpg",
+    "id": "5f9f5b9b-8b9f-4b9f-9f60-9b8b9f4b9f5b",
+    "adopted": false,
+    "category": "Cats"
+  },
+  {
+    "name": "Jerry",
+    "age": 4,
+    "breed": "Tabby",
+    "description": "Jerry is a 4 year old Tabby. He is healthy and loves to play fetch.",
+    "image": "https://images.dog.ceo/breeds/hound-afghan/n02088094_10028.jpg",
+    "id": "5f9f5b9b-8b9f-4b9f-9f61-9b8b9f4b9f5b",
+    "adopted": false,
+    "category": "Cats"
   }
 ]

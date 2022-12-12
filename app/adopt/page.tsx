@@ -18,6 +18,14 @@ export default function Adopt() {
 
     const {data, isLoading, error} = useQuery("pets", fetchPets);
 
+    const filteredPets = data?.filter((pet: PetApiType) => {
+        if (category === "All categories") {
+            return pet.breed.toLowerCase().includes(searchPhrase.toLowerCase());
+        } else {
+            return pet.breed.toLowerCase().includes(searchPhrase.toLowerCase()) && pet.category === category;
+        }
+    } )
+
     return (
         <>
             <Script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"/>
@@ -26,7 +34,7 @@ export default function Adopt() {
                 <SearchInput category={category} setCategory={setCategory} setSearchPhrase={setSearchPhrase}/>
                 {error ? <div>Something went wrong</div>
                     : isLoading ? <Spinner/>
-                    : data?.map((pet: PetApiType) => (
+                    : filteredPets?.map((pet: PetApiType) => (
                         <div key={pet.id}>
                             <h2>{pet.name}</h2>
                             <p>{pet.description}</p>
