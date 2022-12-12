@@ -2,7 +2,7 @@ import {cardSupportData} from "../../utils/data/cardSupportData";
 import SupportCard from "../../components/SupportCard";
 export default function SupportPage() {
     return (
-        <section className="text-gray-600 body-font h-fit">
+        <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
                 <div className="text-center mb-20">
                     <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Three ways to support us</h1>

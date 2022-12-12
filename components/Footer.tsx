@@ -2,7 +2,7 @@ import {Footer} from "flowbite-react"
 
 export default function FooterComponent() {
   return (
-      <Footer container={true} className="border-t-2">
+      <Footer container={true} className="border-t-2 mt-auto">
           <Footer.Copyright
               href="#"
               by="Flowbite™"

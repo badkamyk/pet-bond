@@ -55,7 +55,7 @@ export default function Contact() {
     }
 
     return (
-        <div className="min-h-screen mt-12">
+        <div className="mt-12">
             <section className="w-full max-w-2xl px-6 py-4 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white">Get in touch</h2>
                 <p className="mt-3 text-center text-gray-600 dark:text-gray-400">
@@ -91,7 +91,6 @@ export default function Contact() {
                         <span className="mt-2">example@example.com</span>
                     </a>
                 </div>
-                {}
                 {checkFormErrors()}
                 <form ref={formRef} className="mt-6" onSubmit={handleSubmit(onSubmit)}>
                     <div className="items-center -mx-2 md:flex">
