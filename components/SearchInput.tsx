@@ -1,13 +1,15 @@
 import {useForm} from "react-hook-form";
 import React, {useRef} from "react";
+import {SearchInputProps} from "../utils/types/SearchInputProps";
 
 
 const categories = ["Dogs", "Cats"]
 export default function SearchInput({
                                         category,
-                                        setCategory
-                                    }: { category: string, setCategory: React.Dispatch<React.SetStateAction<"Dogs" | "Cats" | "All categories">> }) {
-    const {register, handleSubmit, watch} = useForm(
+                                        setCategory,
+                                        setSearchPhrase,
+                                    }: SearchInputProps) {
+    const {register, watch} = useForm(
         {
             defaultValues: {
                 petCategory: "",
@@ -29,6 +31,7 @@ export default function SearchInput({
         }
         inputRef?.current?.focus();
     }
+    setSearchPhrase(watch('petCategory'));
 
     return (
         <form>

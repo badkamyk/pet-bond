@@ -9,6 +9,7 @@ import {PetApiType} from "../../utils/types/PetApiType";
 // const queryClient = new QueryClient()
 export default function Adopt() {
     const [category, setCategory] = useState<"Dogs" | "Cats" | "All categories">("All categories");
+    const [searchPhrase, setSearchPhrase] = useState("");
     const queryClient = useQueryClient()
     const fetchPets = async () => {
         const res = await fetch("petApi.json");
@@ -16,14 +17,13 @@ export default function Adopt() {
     }
 
     const {data, isLoading, error} = useQuery("pets", fetchPets);
-    console.log(data)
 
     return (
         <>
             <Script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"/>
             <div className="px-4">
                 <h1 className="text-4xl font-bold my-6">Search and adopt pupils</h1>
-                <SearchInput category={category} setCategory={setCategory}/>
+                <SearchInput category={category} setCategory={setCategory} setSearchPhrase={setSearchPhrase}/>
                 {error ? <div>Something went wrong</div>
                     : isLoading ? <Spinner/>
                     : data?.map((pet: PetApiType) => (
