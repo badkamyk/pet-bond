@@ -10,15 +10,15 @@ export default function SearchInput({
                                         setCategory,
                                         setSearchPhrase,
                                     }: SearchInputProps) {
-    const {register, watch} = useForm(
+    const {register} = useForm(
         {
             defaultValues: {
                 petCategory: "",
             }
         },
     );
-    setSearchPhrase(watch("petCategory"));
     const {ref, ...rest} = register('petCategory');
+
     const inputRef = useRef<HTMLInputElement>(null);
     const changeDropDownText = (e: React.MouseEvent<HTMLButtonElement>) => {
         const button = e.currentTarget;
@@ -74,6 +74,7 @@ export default function SearchInput({
                         // @ts-ignore
                         inputRef.current = e
                     }}
+                           onChange={(e) => {setSearchPhrase(e.target.value)}}
                            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                            placeholder="Type in pet's breed..."/>
                     <div

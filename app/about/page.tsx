@@ -35,7 +35,7 @@ export default function About() {
                                 always looking for volunteers to help us with
                                 our mission. If you are interested in helping
                                 us, please contact us.
-                                You can search throurgh a list of animals that
+                                You can search through a list of animals that
                                 are looking for a new home. You can also
                                 contribute to our cause by donating money or
                                 volunteering.

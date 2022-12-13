@@ -29,7 +29,7 @@ export default function Contact() {
     );
     const formRef = useRef<HTMLFormElement>(null);
 
-    const onSubmit = (contactData: ContactType) => {
+    const onSubmit = () => {
         emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current as string | HTMLFormElement, 'YOUR_PUBLIC_KEY')
             .then((result) => {
                 console.log(result.text);
