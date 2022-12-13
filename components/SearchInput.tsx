@@ -10,14 +10,14 @@ export default function SearchInput({
                                         setCategory,
                                         setSearchPhrase,
                                     }: SearchInputProps) {
-    const {register} = useForm(
+    const {register, watch} = useForm(
         {
             defaultValues: {
                 petCategory: "",
             }
         },
     );
-    const {ref, ...rest} = register('petCategory');
+    const {ref, onChange, ...rest} = register('petCategory');
 
     const inputRef = useRef<HTMLInputElement>(null);
     const changeDropDownText = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -34,6 +34,12 @@ export default function SearchInput({
         inputRef?.current?.focus();
     }
 
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchPhrase(e.target.value);
+        onChange(e);
+    }
+
+    console.log(watch('petCategory'));
     return (
         <form>
             <div className="flex">
@@ -74,7 +80,7 @@ export default function SearchInput({
                         // @ts-ignore
                         inputRef.current = e
                     }}
-                           onChange={(e) => {setSearchPhrase(e.target.value)}}
+                           onChange={(e) => onInputChange(e)}
                            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                            placeholder="Type in pet's breed..."/>
                     <div
