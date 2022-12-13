@@ -3,11 +3,10 @@ import SearchInput from "../../components/SearchInput";
 import Script from "next/script";
 import {QueryClientProvider, QueryClient, useQuery, useQueryClient} from "react-query";
 import Spinner from "../../components/Spinner";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {PetApiType} from "../../utils/types/PetApiType";
 import PetCard from "../../components/PetCard";
 
-// const queryClient = new QueryClient()
 export default function Adopt() {
     const [category, setCategory] = useState<"Dogs" | "Cats" | "All categories">("All categories");
     const [searchPhrase, setSearchPhrase] = useState("");
@@ -27,6 +26,18 @@ export default function Adopt() {
         }
     })
 
+    useEffect(() => {
+        window.addEventListener("storage", () => {
+            queryClient.invalidateQueries("pets");
+        })
+
+        return () => {
+            window.removeEventListener("storage", () => {
+                queryClient.invalidateQueries("pets");
+            })
+        }
+    }, [])
+
     return (
         <>
             <Script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"/>
@@ -35,7 +46,7 @@ export default function Adopt() {
                 <SearchInput category={category} setCategory={setCategory} setSearchPhrase={setSearchPhrase}/>
                 {error ? <div>Something went wrong</div>
                     : isLoading ? <Spinner/>
-                        : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 my-6">
                             {filteredPets?.map((pet: PetApiType) => (
                                 <PetCard key={pet.id} {...pet}/>
                             ))}
