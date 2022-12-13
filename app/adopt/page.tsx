@@ -5,14 +5,12 @@ import {useQuery, useQueryClient} from "react-query";
 import Spinner from "../../components/Spinner";
 import {useEffect, useState} from "react";
 import {PetApiType} from "../../utils/types/PetApiType";
-import useInvalidateQuery from "../../hooks/useInvalidateQuery";
 import AllPetsCards from "../../components/AllPetsCards";
 
 export default function Adopt() {
     const [category, setCategory] = useState<"Dogs" | "Cats" | "All categories">("All categories");
     const [searchPhrase, setSearchPhrase] = useState("");
     const queryClient = useQueryClient()
-    useInvalidateQuery({queryClient, queryKey: "pets"})
     const fetchPets = async () => {
         const res = await fetch("petApi.json");
         return res.json();
@@ -28,17 +26,17 @@ export default function Adopt() {
         }
     })
 
-    // useEffect(() => {
-    //     window.addEventListener("storage", () => {
-    //         queryClient.invalidateQueries("pets");
-    //     })
-    //
-    //     return () => {
-    //         window.removeEventListener("storage", () => {
-    //             queryClient.invalidateQueries("pets");
-    //         })
-    //     }
-    // }, [])
+    useEffect(() => {
+        window.addEventListener("storage", () => {
+            queryClient.invalidateQueries("pets");
+        })
+
+        return () => {
+            window.removeEventListener("storage", () => {
+                queryClient.invalidateQueries("pets");
+            })
+        }
+    }, [])
 
     return (
         <>
