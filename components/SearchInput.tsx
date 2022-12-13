@@ -1,3 +1,4 @@
+'use client'
 import {useForm} from "react-hook-form";
 import React, {useRef} from "react";
 import {SearchInputProps} from "../utils/types/SearchInputProps";
@@ -16,6 +17,7 @@ export default function SearchInput({
             }
         },
     );
+    setSearchPhrase(watch("petCategory"));
     const {ref, ...rest} = register('petCategory');
     const inputRef = useRef<HTMLInputElement>(null);
     const changeDropDownText = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +33,6 @@ export default function SearchInput({
         }
         inputRef?.current?.focus();
     }
-    setSearchPhrase(watch('petCategory'));
 
     return (
         <form>

@@ -1,17 +1,29 @@
 'use client'
 import AllPetsCards from "../../components/AllPetsCards";
 import {useEffect, useState} from "react";
+import {PetApiType} from "../../utils/types/PetApiType";
 
 export default function Favorites() {
-    const petInLocalStorage = Object.keys(localStorage).filter(key => key.includes("pet-"));
-    const pets = petInLocalStorage.map(key => JSON.parse(localStorage.getItem(key) || ""));
-    const [petInLocalStorageState, setPetInLocalStorageState] = useState(petInLocalStorage);
+    const filterPets = Object.keys(localStorage).filter(key => key.includes("pet-"));
+    const getPets = filterPets.map(key => JSON.parse(localStorage.getItem(key) || ""));
+    const [pets, setPets] = useState<PetApiType[]>(getPets);
 
-// rerender on remove from favorites
+    function checkForChanges() {
+        const petInLocalStorage = Object.keys(localStorage).filter(key => key.includes("pet-"));
+        const savedPets = petInLocalStorage.map(key => JSON.parse(localStorage.getItem(key) || ""));
+        setPets(savedPets);
+    }
+
     useEffect(() => {
-        setPetInLocalStorageState(Object.keys(localStorage).filter(key => key.includes("pet-")));
-    }, [petInLocalStorageState])
-
+        window.addEventListener(("storage"), () => {
+            checkForChanges();
+        })
+        return () => {
+            window.removeEventListener(("storage"), () => {
+                checkForChanges();
+            })
+        }
+    }, [])
     return (
         <>
             <h1 className="text-4xl font-bold my-6 px-3">Favorites</h1>
